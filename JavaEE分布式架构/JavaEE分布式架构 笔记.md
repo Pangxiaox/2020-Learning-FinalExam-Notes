@@ -267,3 +267,11 @@ Servlet是满足一定规范的Java类，用于处理请求并创建响应
 
 ### 第三节课
 
+### 1. 技术讲解（工具篇）
+
+Maven、IDEA、MySQL、Git、Navicat、Docker、Postman、XMind、Typora、Google Browser、Notepad++、Sublime Text、Junit等工具和相关技术的讲解
+
+
+
+### 第四节课
+
