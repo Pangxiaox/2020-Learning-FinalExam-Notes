@@ -275,3 +275,111 @@ Maven、IDEA、MySQL、Git、Navicat、Docker、Postman、XMind、Typora、Googl
 
 ### 第四节课
 
+### 1. 框架Hibernate
+
+**使用框架的好处**
+
+从软件复用的角度来说：合理使用框架，合理的分层。很多项目中都可以完完全全再用上，既能够提高效率，也能够降低引入的风险。
+
+**ORM框架**
+
+对象——关系映射（Object-Relational Mapping，ORM）：
+
+对象和关系数据是业务实体的两种表现形式，业务实体在内存中表现为对象，在数据库中表现为关系数据。内存中的对象之间存在关联和继承关系，而在数据库中，关系数据无法直接表达多对多关联和继承关系。因此，对象-关系映射(ORM)系统一般以中间件的形式存在，主要实现程序对象到关系数据库数据的映射。
+
+ORM框架包含对持久类对象进行CRUD操作的API，通过这种封装避免了不规范、冗余、风格不统一的SQL语句，可以避免很多人为Bug，方便编码风格的统一和后期维护。
+
+🔺优缺点分析
+
+优点：①提高开发效率，降低开发成本 ②使开发更加对象化 ③可移植 ④可以很方便地引入数据缓存之类的附加功能
+
+缺点： ①自动化进行关系数据库的映射需要消耗系统性能。其实这里的性能消耗还好啦，一般来说都可以忽略之。 ②在处理多表联查、where条件复杂之类的查询时，ORM的语法会变得复杂。
+
+🔺常用ORM框架
+
+Java系列：Hibernate、iBatis、Mybatis、Spring DATA JPA
+
+.Net系列：NHibernate、iBATIS.NET
+
+**Hibernate 简介**
+
+Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了非常轻量级的对象封装，它将POJO与数据库表建立映射关系，是一个全自动的orm框架，hibernate可以自动生成SQL语句，自动执行，使得Java程序员可以随心所欲的使用对象编程思维来操纵数据库。
+
+**Hibernate核心API**
+
+Hibernate的API一共有6个，分别为:Session、SessionFactory、Transaction、Query、Criteria和Configuration。通过这些接口，可以对持久化对象进行存取、事务控制
+
+**Session**
+
+Session接口负责执行被持久化对象的CRUD操作(CRUD的任务是完成与数据库的交流，包含了很多常见的SQL语句)。但需要注意的是Session对象是非线程安全的。同时，Hibernate的session不同于JSP应用中的HttpSession。这里当使用session这个术语时，其实指的是Hibernate中的session，而以后会将HttpSession对象称为用户session。
+
+**SessionFactory**
+
+SessionFactory接口负责初始化Hibernate。它充当数据存储源的代理，并负责创建Session对象。这里用到了工厂模式。需要注意的是SessionFactory并不是轻量级的，因为一般情况下，一个项目通常只需要一个SessionFactory就够，当需要操作多个数据库时，可以为每个数据库指定一个SessionFactory。
+
+**Transaction**
+
+Transaction 接口是对实际事务实现的一个抽象，能够让开发者能够使用一个统一事务的操作界面，使得自己的项目可以在不同的环境和容器之间方便地移植。
+
+**Query**
+
+Query接口让你方便地对数据库及持久对象进行查询，它可以有两种表达方式：HQL语言或本地数据库的SQL语句。Query经常被用来绑定查询参数、限制查询记录数量，并最终执行查询操作。
+
+**Criteria**
+
+Criteria接口与Query接口非常类似，允许创建并执行面向对象的标准化查询。值得注意的是Criteria接口也是轻量级的，它不能在Session之外使用。
+
+**Configuration**
+
+Configuration 类的作用是对Hibernate 进行配置，以及对它进行启动。在Hibernate 的启动过程中，Configuration 类的实例首先定位映射文档的位置，读取这些配置，然后创建一个SessionFactory对象。虽然Configuration 类在整个Hibernate 项目中只扮演着一个很小的角色，但它是启动hibernate 时所遇到的第一个对象。
+
+**Hibernate基本步骤**
+
+1. 获取SessionFactory 
+
+2. 通过SessionFactory 获取一个Session
+
+3. 在Session基础上开启一个事务
+
+4. 通过调用Session的save方法把对象保存到数据库
+
+5. 提交事务
+
+6. 关闭Session
+7. 关闭SessionFactory
+
+**Hibernate对象的三种状态**
+
+瞬时、持久和脱管
+
+瞬时：指的是没有和hibernate发生任何关系，在数据库中也没有对应的记录，一旦JVM结束，这个对象也就消失了 
+持久：指的是一个对象和hibernate发生联系，有对应的session,并且在数据库中有对应的一条记录 
+脱管：指的是一个对象虽然在数据库中有对应的一条记录，但是它所对应的session已经关闭了
+
+**Hibernate 缓存**
+
+hibernate默认是开启一级缓存的，一级缓存存放在session上,二级缓存是在SessionFactory上
+
+**Hibernate数据库连接池**
+
+建立数据库连接时比较消耗时间的，所以通常都会采用数据库连接池的技术来建立多条数据库连接，并且在将来持续使用，从而节约掉建立数据库连接的时间 
+hibernate本身是提供了数据库连接池的，但是hibernate官网也不推荐使用他自带的数据库连接池。 一般都会使用第三方的数据库连接池 ，C3P0是免费的第三方的数据库连接池，并且有不错的表现。Hibernate使用C3P0连接池较多。
+
+**Hibernate两种获取session方式**
+
+openSession、getCurrentSession
+
+- 获取的是否是同一个session对象
+
+  openSession每次都会得到一个新的Session对象 
+  getCurrentSession在同一个线程中，每次都是获取相同的Session对象，但是在不同的线程中获取的是不同的Session对象 
+
+- 事务提交的必要性
+
+  openSession只有在增加，删除，修改的时候需要事务，查询时不需要的 
+  getCurrentSession是所有操作都必须放在事务中进行，并且提交事务后，session就自动关闭，不能够再进行关闭 
+
+
+
+### 第五节课
+
