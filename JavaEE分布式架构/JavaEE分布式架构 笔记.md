@@ -383,3 +383,54 @@ openSession、getCurrentSession
 
 ### 第五节课
 
+### 1. 框架Mybatis
+
+**Mybatis简介**
+
+MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。
+
+**Mybatis特点**
+
+- 灵活：mybatis不会对应用程序或者数据库的现有设计强加任何影响。 sql写在xml里，便于统一管理和优化。通过sql语句可以满足操作数据库的所有需求。
+- 解除sql与程序代码的耦合：通过提供DAO层，将业务逻辑和数据访问逻辑分离，使系统的设计更清晰，更易维护，更易单元测试。sql和代码的分离，提高了可维护性。
+- 提供映射标签，支持对象与数据库的orm字段关系映射
+- 提供对象关系映射标签，支持对象关系组建维护
+- 提供xml标签，支持编写动态sql。
+
+**Mybatis优势和Hibernate优势**
+
+①Mybatis
+
+- MyBatis可以进行更为细致的SQL优化，可以减少查询字段。
+- MyBatis容易掌握，而Hibernate门槛较高。
+
+②Hibernate
+
+- Hibernate的DAO层开发比MyBatis简单，Mybatis需要维护SQL和结果映射。
+- Hibernate对对象的维护和缓存要比MyBatis好，对增删改查的对象的维护要方便。
+- Hibernate数据库移植性很好，MyBatis的数据库移植性不好，不同的数据库需要写不同SQL。
+- Hibernate有更好的二级缓存机制，可以使用第三方缓存。MyBatis本身提供的缓存机制不佳。
+
+**Mybatis总体流程**
+
+①加载配置并初始化
+
+②接受调用请求
+
+③处理操作请求
+
+④返回处理结果将最终的处理结果返回
+
+**Mybatis动态SQL语句**
+
+mybatis 动态SQL，通过 if, choose, when, otherwise, trim, where, set, foreach等标签，可组合成非常灵活的SQL语句，从而在提高 SQL 语句的准确性的同时，也大大提高了开发人员的效率。
+
+**Mybatis缓存**
+
+一级缓存：Mybatis的一级缓存在session上，只要通过session查过的数据，都会放在session上，下一次再查询相同id的数据，都直接冲缓存中取出来，而不用到数据库里去取了。
+
+二级缓存：Mybatis二级缓存是SessionFactory，如果两次查询基于同一个SessionFactory，那么就从二级缓存中取数据，而不用到数据库里去取了。
+
+
+
+### 第六节课
