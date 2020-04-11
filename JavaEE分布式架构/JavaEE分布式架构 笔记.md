@@ -453,9 +453,9 @@ mybatis 动态SQL，通过 if, choose, when, otherwise, trim, where, set, foreac
 
 ⑦Java源码是经典学习范例
 
-**Spring框架结构**
+**Spring框架结构**  
 
-**放图spring**
+![Image text](https://github.com/Pangxiaox/2020-Learning-FinalExam-Notes/blob/master/JavaEE%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/spring.PNG)  
 
 ①核心容器：核心容器主要组件是BeanFactory，是工厂模式的实现
 
