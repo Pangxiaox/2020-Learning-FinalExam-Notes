@@ -434,3 +434,117 @@ mybatis 动态SQL，通过 if, choose, when, otherwise, trim, where, set, foreac
 
 
 ### 第六节课
+
+### 1. 框架Spring
+
+**Spring特点**
+
+①方便解耦，简化开发
+
+②AOP编程的支持
+
+③声明式事务的支持
+
+④方便程序的测试
+
+⑤方便集成各种优秀框架
+
+⑥降低Java EE API的使用难度
+
+⑦Java源码是经典学习范例
+
+**Spring框架结构**
+
+**放图spring**
+
+①核心容器：核心容器主要组件是BeanFactory，是工厂模式的实现
+
+②Spring上下文：配置文件
+
+③Spring AOP：为基于Spring的应用程序中的对象提供了事务管理服务
+
+④Spring DAO：面向JDBC的异常遵从通用DAO异常层次结构
+
+⑤Spring ORM：提供了ORM的对象关系工具
+
+⑥Spring Web模块：Web上下文模块在应用程序上下文模块之上，为基于Web的应用程序提供了上下文
+
+⑦Spring MVC框架：MVC框架是一个全功能的构建Web应用程序的MVC实现
+
+**Spring框架特征**
+
+轻量，控制反转，容器，框架
+
+**Spring的优点**
+
+1.低侵入式设计，代码污染极低
+2.独立于各种应用服务器，基于Spring框架的应用，可以真正实现Write Once,Run Anywhere的承诺
+3.Spring的DI机制降低了业务对象替换的复杂性，提高了组件之间的解耦
+4.Spring的AOP支持允许将一些通用任务如安全、事务、日志等进行集中式管理，从而提供了更好的复用
+5.Spring的ORM和DAO提供了与第三方持久层框架的良好整合，并简化了底层的数据库访问
+6.Spring并不强制应用完全依赖于Spring，开发者可自由选用Spring框架的部分或全部
+
+**Spring核心技术之IOC**
+
+- IOC（Inversion of Control)，控制反转，是一种设计思想
+
+- IOC 让程序员不在关注怎么去创建对象，而是关注与对象创建之后的操作，把对象的创建、初始化、销毁等工作交给spring容器来做。
+
+- Spring的IoC容器在实现控制反转和依赖注入的过程中,可以划分为两个阶段:
+
+  ①容器启动阶段：加载配置、分析配置信息、装备到BeanDefinition、其他后处理
+
+  ②Bean实例化阶段：实例化对象、装配依赖、生命周期回调、对象其他处理、注册回调接口
+
+- Spring中提供了两种IoC容器：BeanFactory和ApplicationContext
+
+**Spring核心技术之DI**
+
+- 简单来说什么是依赖注入，就是给属性赋值（包括基本数据类型和引用数据类型）
+- 常用的有两种方式：构造方法注入和setter方法注入，还有一种已经退出历史舞台的接口注入方式
+
+**Spring核心技术之AOP**
+
+- AOP（Aspect Oriented Programming），通常称为面向切面编程。它利用一种称为"横切"的技术，剖解开封装的对象内部，并将那些影响了多个类的公共行为封装到一个可重用模块，并将其命名为"Aspect"，即切面。所谓"切面"，简单说就是那些与业务无关，却为业务模块所共同调用的逻辑或责任封装起来，便于减少系统的重复代码，降低模块之间的耦合度，并有利于未来的可操作性和可维护性。比如性能统计，日志，事务管理等等，在面向切面编程AOP的思想里面，核心业务功能和切面功能分别独立进行开发 ，然后把切面功能和核心业务功能 "编织" 在一起，这就叫AOP
+
+- AOP技术解决之静态代理
+
+  创建业务逻辑类、切面逻辑类和静态代理类。
+
+  这是一个很基础的静态代理，业务类ProductServiceImpl只需要关注业务逻辑本身，保证了业务的重用性，这也是代理类的优点，
+
+- AOP技术解决之JDK动态代理
+
+  动态代理就不要自己手动生成代理类了
+
+  后期在 ProductService中增加业务方法，都不用更改代码就能自动给我们生成代理对象。而且将 ProductService换成别的类也是可以的。也就是做到了代理对象能够代理多个目标类，多个目标方法。
+
+  我们这里使用的是 JDK 动态代理，要求是必须要实现接口。与之对应的另一种动态代理实现模式Cglib
+
+- 使用Cglib实现动态代理
+
+  CGLIB(Code Generation Library)是一个开源项目！是一个强大的，高性能，高质量的Code生成类库
+
+  它可以在运行期扩展Java类与实现Java接口。Hibernate用它来实现PO(Persistent Object 持久化对象)字节码的动态生成。
+
+  CGLIB是一个强大的高性能的代码生成包。它广泛的被许多AOP的框架使用，例如Spring AOP为他们提供方法的interception（拦截）。CGLIB包的底层是通过使用一个小而快的字节码处理框架ASM，来转换字节码并生成新的类。
+
+- AOP关键术语
+
+  ①target：目标类，需要被代理的类，如ProductService
+
+  ②Jointpoint：连接点，指可能被拦截到的方法，如所有的方法
+
+  ③Pointcut：切入点，已经被增强的连接点，如addProduct()
+
+  ④advice：通知/增强，增强代码，如after、before
+
+  ⑤Weaving：织入，把增强advice应用到目标对象target来创建新的代理对象proxy的过程
+
+  ⑥proxy：代理类，通知+切入点
+
+  ⑦Aspect：切面，切入点pointcut和通知advice的结合
+
+
+
+### 第七节课
