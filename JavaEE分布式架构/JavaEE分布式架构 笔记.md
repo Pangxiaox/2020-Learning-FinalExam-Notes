@@ -551,9 +551,9 @@ mybatis 动态SQL，通过 if, choose, when, otherwise, trim, where, set, foreac
 
 ### 1. 框架SpringMVC
 
-**MVC框架**
+**MVC框架**  
 
-**放图mvc1**
+![Image text](https://github.com/Pangxiaox/2020-Learning-FinalExam-Notes/blob/master/JavaEE%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/mvc1.PNG)  
 
 Model View Controller，是模型-视图-控制器的缩写，一种软件设计典范，用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集道一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。
 
@@ -567,7 +567,7 @@ Model View Controller，是模型-视图-控制器的缩写，一种软件设计
 
 **MVC模型图**
 
-**放图mvc2**
+![Image text](https://github.com/Pangxiaox/2020-Learning-FinalExam-Notes/blob/master/JavaEE%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84/mvc2.PNG)  
 
 **MVC优点**
 
